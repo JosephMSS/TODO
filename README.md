@@ -13,3 +13,6 @@
   > Para poder retornar esta vista debemos emplearla clase  de  Inertia para poder renderizar el componente que se encuentra en `resources\js\Pages\` .
   
   > Por ultimo configuramos la ruta de  tipo recurso para el controlador de notas.
+  ## Pesonalizacion
+  Recordar que cada ves que hagamos un cambio en los componentes debemos renderizarlos de nuevo para que se ejecuten los cambios, esto con `npm run watch`
+  >La configuracion delos botones de las rutas la podemos ejecutar por medio del componente `resources\js\Layouts\AppLayout.vue`, asi personalizamos el componente
