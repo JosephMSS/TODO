@@ -101,4 +101,6 @@ methods:{
             this.inertia.put(this.route('notes.update',this.note.id),this.form)
         }
 ```
-En donde por medio de `inertia.put`(este puede ser: post, delete) enviamos la ruta,id y con el objeto `form` enviamos la informacion que se encuentra en el formulario. 
+En donde por medio de `inertia.put`(este puede ser: post, delete) enviamos la ruta,id y con el objeto `form` enviamos la informacion que se encuentra en el formulario.
+## [Formuario de create](resources\js\Pages\Notes\Create.vue)
+En este caso los cambios especificos que haces es eliminar la popiedad del objeto y ademas  inicializar los datos del form  vacio, para que a medida de que se crea el objeto este se vaya llenando con los espacios enlazados. 
