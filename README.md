@@ -101,6 +101,28 @@ methods:{
             this.inertia.put(this.route('notes.update',this.note.id),this.form)
         }
 ```
+
 En donde por medio de `inertia.put`(este puede ser: post, delete) enviamos la ruta,id y con el objeto `form` enviamos la informacion que se encuentra en el formulario.
+
 ## [Formuario de create](resources\js\Pages\Notes\Create.vue)
-En este caso los cambios especificos que haces es eliminar la popiedad del objeto y ademas  inicializar los datos del form  vacio, para que a medida de que se crea el objeto este se vaya llenando con los espacios enlazados, y al momento de ejecutar la accion submit enviamos el formulario que se encuantra enlazado a las cajas. `Recordar que el formulario no lleva el atributo action, se cambia por el atributo submit.prevent`
+
+En este caso los cambios especificos que haces es eliminar la popiedad del objeto y ademas inicializar los datos del form vacio, para que a medida de que se crea el objeto este se vaya llenando con los espacios enlazados, y al momento de ejecutar la accion submit enviamos el formulario que se encuantra enlazado a las cajas. `Recordar que el formulario no lleva el atributo action, se cambia por el atributo submit.prevent`
+
+## [Eliminar](resources\js\Pages\Notes\Edit.vue)
+
+Para eliminar un formulario debemos hace la configuacion del evento destroy
+
+### Flash Message
+
+Debemos crar un canal de comunicacion entre laravel y vue para podern enviar este tipo de mensajes.
+
+1. Ingreasamos a la carpeta archivo de [Providers](app\Providers\AppServiceProvider.php).
+   use Illuminate\Support\Facades\Session;
+    - Importamos el componente de Inertia y Session[(Componente de Laravel que nos premita trabajar con las sesiones)]()
+    - Configuramos el metodo `boot`, en donde empleamos estas clases y cnfiguramos la variable de sesion que necesitamos.
+    - Uso de variable flash
+    ```
+   <div v-if="$page.props.flash.status" class="bg-blue-500   text-white text-sm font-bold p-4">
+      <p>{{$page.props.flash.status}}</p>
+   </div>
+    ```

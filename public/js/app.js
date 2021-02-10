@@ -3197,6 +3197,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -4412,6 +4415,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -4430,7 +4448,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submit: function submit() {
-      this.$inertia.put(this.route('notes.update', this.note.id), this.form);
+      this.$inertia.put(this.route("notes.update", this.note.id), this.form);
+    },
+    destroy: function destroy() {
+      if (confirm("Desea eliminar la nota?")) {
+        this.$inertia["delete"](this.route("notes.destroy", this.note.id));
+      }
     }
   }
 });
@@ -31629,7 +31652,24 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _c("main", [_vm._t("default")], 2),
+          _c(
+            "main",
+            [
+              _vm.$page.props.flash.status
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "bg-blue-500   text-white text-sm font-bold p-4"
+                    },
+                    [_c("p", [_vm._v(_vm._s(_vm.$page.props.flash.status))])]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm._t("default")
+            ],
+            2
+          ),
           _vm._v(" "),
           _c("portal-target", { attrs: { name: "modal", multiple: "" } })
         ],
@@ -33600,11 +33640,15 @@ var render = function() {
             _c("div", { staticClass: "md:col-span-1" }, [
               _c("div", { staticClass: "px-4 sm:px0" }, [
                 _c("h3", { staticClass: "text-lg text-gray-900" }, [
-                  _vm._v("Editar una nota")
+                  _vm._v(
+                    "\n                            Editar una nota\n                        "
+                  )
                 ]),
                 _vm._v(" "),
                 _c("p", { staticClass: "text-sm text-gray-600" }, [
-                  _vm._v("Si editas no podrás volver al estado anterior")
+                  _vm._v(
+                    "\n                            Si editas no podrás volver al estado anterior\n                        "
+                  )
                 ])
               ])
             ]),
@@ -33695,9 +33739,31 @@ var render = function() {
                         staticClass:
                           "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
                       },
-                      [_vm._v("Editar")]
+                      [
+                        _vm._v(
+                          "\n                                Editar\n                            "
+                        )
+                      ]
                     )
                   ]
+                ),
+                _vm._v(" "),
+                _c("hr", { staticClass: "my-6" }),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass:
+                      "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md",
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.destroy($event)
+                      }
+                    }
+                  },
+                  [_vm._v("Eliminar Nota")]
                 )
               ])
             ])
@@ -33744,7 +33810,7 @@ var render = function() {
                   staticClass:
                     "font-semibold text-xl text-gray-800 leading-tight"
                 },
-                [_vm._v("\n            Notes\n        ")]
+                [_vm._v("\n            Modulo de Notas\n        ")]
               )
             ]
           },
