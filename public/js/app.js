@@ -4310,12 +4310,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
     Welcome: _Jetstream_Welcome__WEBPACK_IMPORTED_MODULE_1__.default
+  },
+  props: {
+    notes: Array
   }
 });
 
@@ -32964,14 +32991,74 @@ var render = function() {
             _c("div", { staticClass: "md:col-span-1" }, [
               _c("div", { staticClass: "px-4 sm:px-0" }, [
                 _c("h3", { staticClass: "text-lg text-gray-900" }, [
-                  _vm._v("Listado de notas")
+                  _vm._v(
+                    "\n                            Listado de notas\n                        "
+                  )
                 ]),
                 _vm._v(" "),
                 _c("p", { staticClass: "text-sm text-gray-600" }, [
                   _vm._v(
-                    "\n                    Toma el registro correcto y ejecuta calquier funcion (ver,editar,eliminar)"
+                    "\n                            Toma el registro correcto y ejecuta calquier\n                            funcion (ver,editar,eliminar)\n                        "
                   )
                 ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "md:col-span-2 mt-5 md:mt-0" }, [
+              _c("div", { staticClass: "shadow bg-white md:rounded-md p-4" }, [
+                _c(
+                  "table",
+                  _vm._l(_vm.notes, function(note, i) {
+                    return _c("tr", { key: i }, [
+                      _c("td", { staticClass: "border px-4 py-2" }, [
+                        _vm._v(
+                          "\n                                    " +
+                            _vm._s(note.excerpt) +
+                            "\n                                "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        { staticClass: "px-4 py-2" },
+                        [
+                          _c(
+                            "inertia-link",
+                            {
+                              attrs: { href: _vm.route("notes.show", note.id) }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                        Ver\n                                    "
+                              )
+                            ]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        { staticClass: "px-4 py-2" },
+                        [
+                          _c(
+                            "inertia-link",
+                            {
+                              attrs: { href: _vm.route("notes.edit", note.id) }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                        Editar\n                                    "
+                              )
+                            ]
+                          )
+                        ],
+                        1
+                      )
+                    ])
+                  }),
+                  0
+                )
               ])
             ])
           ])
