@@ -58,3 +58,12 @@ Esta variable es la que estamos mandando desde el controlador
 </table>
 
 ```
+
+### Division de un componente VUE
+
+Este se puede dividir en tres secciones:
+
+1. Plantilla
+2. Scripts
+3. Estilos
+ En las vistas vue mepleamos codigo javascript para acceder a las propiedades del objeto. 
