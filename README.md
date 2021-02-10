@@ -122,7 +122,49 @@ Debemos crar un canal de comunicacion entre laravel y vue para podern enviar est
     - Configuramos el metodo `boot`, en donde empleamos estas clases y cnfiguramos la variable de sesion que necesitamos.
     - Uso de variable flash
     ```
-   <div v-if="$page.props.flash.status" class="bg-blue-500   text-white text-sm font-bold p-4">
+    <div v-if="$page.props.flash.status" class="bg-blue-500   text-white text-sm font-bold p-4">
       <p>{{$page.props.flash.status}}</p>
-   </div>
+    </div>
     ```
+
+### Configuracion de buscador
+
+Creamos el input del buscador y este lo enlazamos por medio del atributo `v-model`
+
+```
+ <input class="form-input rounded-md shadow-sm" placeholder="Buscar..." type="text" v-model="q">
+```
+
+Ademas agregamos la funcion `data()` en los scripts, en donde vamos a retornar un objeto con el atributo `q` inicialiado como vacio.
+
+```
+data(){
+        return {
+            q:''
+        }
+    },
+```
+
+Por ultimo vamos a observar a `q` con la funcion `watch`, esto nos va a permitir enviar la informacion al servidor y asi actualizar implementar la busqueda.
+
+```
+watch:{
+        q:function(value){
+            this.$inertia.replace(this.route('notes.index',{q:value}))
+        }
+```
+
+Hacemos uso de `replace` ya que cumple la funcionalidad de `get` pero sin refrescar la pagina completa, ademas de que acctualiza la url de manera automatica.
+
+Por ultimo configuramos el index en el controlador para que reciba el parametro `q`(Este nombre se usa por estandar para hacer las consultas, tambien se le llama `query`).
+
+```
+  public function index(Request $request)
+   {
+       return Inertia::render('Notes/Index',[
+           'notes'=>Note::latest()
+           ->where('excerpt','LIKE',"%$request->q%")
+           ->get()
+       ]);
+   }
+```
