@@ -93,7 +93,7 @@ class="form-input w-full rounded-md shadow-sm"></textarea>
 
 ## Update
 
-> Podemos agregar en el foulario el metodo `submit.prevent='submit'`, prevent evita que se recargue el formulario y el valor submit hace referencia a unmetodo configurado en los scripts
+> Podemos agregar en el foulario el metodo `submit.prevent='submit'`, prevent evita que se recargue el formulario y el valor submit hace referencia a un metodo configurado en los scripts
 
 ```
 methods:{
@@ -103,4 +103,4 @@ methods:{
 ```
 En donde por medio de `inertia.put`(este puede ser: post, delete) enviamos la ruta,id y con el objeto `form` enviamos la informacion que se encuentra en el formulario.
 ## [Formuario de create](resources\js\Pages\Notes\Create.vue)
-En este caso los cambios especificos que haces es eliminar la popiedad del objeto y ademas  inicializar los datos del form  vacio, para que a medida de que se crea el objeto este se vaya llenando con los espacios enlazados. 
+En este caso los cambios especificos que haces es eliminar la popiedad del objeto y ademas  inicializar los datos del form  vacio, para que a medida de que se crea el objeto este se vaya llenando con los espacios enlazados, y al momento de ejecutar la accion submit enviamos el formulario que se encuantra enlazado a las cajas. `Recordar que el formulario no lleva el atributo action, se cambia por el atributo submit.prevent`

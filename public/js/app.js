@@ -4346,7 +4346,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submit: function submit() {
-      this.$inertia.post(this.route('notes.store', this.note.id), this.form);
+      this.$inertia.post(this.route('notes.store'), this.form);
     }
   }
 });
@@ -33781,7 +33781,8 @@ var render = function() {
                   _c(
                     "inertia-link",
                     {
-                      staticClass: "bg-blue-500 text-white",
+                      staticClass:
+                        "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md",
                       attrs: { href: _vm.route("notes.create") }
                     },
                     [
