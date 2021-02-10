@@ -33,7 +33,7 @@
                                         </inertia-link>
                                     </td>
                                     <td class="px-4 py-2">
-                                        <inertia-link :href="route('notes.edit',note)">
+                                        <inertia-link :href="route('notes.edit',note.id)">
                                             Editar
                                         </inertia-link>
                                     </td>

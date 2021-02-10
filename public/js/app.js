@@ -4284,7 +4284,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
-/* harmony import */ var _Jetstream_Welcome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/Welcome */ "./resources/js/Jetstream/Welcome.vue");
 //
 //
 //
@@ -4332,20 +4331,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
-    Welcome: _Jetstream_Welcome__WEBPACK_IMPORTED_MODULE_1__.default
+    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default
   },
   props: {
     note: Object
@@ -4357,6 +4346,11 @@ __webpack_require__.r(__webpack_exports__);
         content: this.note.content
       }
     };
+  },
+  methods: {
+    submit: function submit() {
+      this.$inertia.put(this.route('notes.update', this.note.id), this.form);
+    }
   }
 });
 
@@ -33274,7 +33268,7 @@ var render = function() {
                   staticClass:
                     "font-semibold text-xl text-gray-800 leading-tight"
                 },
-                [_vm._v("\n            Notes\n        ")]
+                [_vm._v("\n            Módulo de Notas\n        ")]
               )
             ]
           },
@@ -33288,94 +33282,107 @@ var render = function() {
         _c("div", { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
           _c("div", { staticClass: "md:grid md:grid-cols-3 md:gap-6" }, [
             _c("div", { staticClass: "md:col-span-1" }, [
-              _c("div", { staticClass: "px-4 sm:px-0" }, [
+              _c("div", { staticClass: "px-4 sm:px0" }, [
                 _c("h3", { staticClass: "text-lg text-gray-900" }, [
-                  _vm._v(
-                    "\n                            Detalle de una nota\n                        "
-                  )
+                  _vm._v("Editar una nota")
                 ]),
                 _vm._v(" "),
                 _c("p", { staticClass: "text-sm text-gray-600" }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.note.excerpt) +
-                      "\n                        "
-                  )
+                  _vm._v("Si editas no podrás volver al estado anterior")
                 ])
               ])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "md:col-span-2 mt-5 md:mt-0" }, [
               _c("div", { staticClass: "shadow bg-white md:rounded-md p-4" }, [
-                _c("form", [
-                  _c(
-                    "label",
-                    { staticClass: "block font-medium text-sm text-gray-700" },
-                    [_vm._v("Resumen")]
-                  ),
-                  _vm._v(" "),
-                  _c("textarea", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.note.excerpt,
-                        expression: "note.excerpt"
-                      }
-                    ],
-                    staticClass: "form-input w-full rounded-md shadow-sm",
-                    domProps: { value: _vm.note.excerpt },
+                _c(
+                  "form",
+                  {
                     on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.note, "excerpt", $event.target.value)
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.submit($event)
                       }
                     }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    { staticClass: "block font-medium text-sm text-gray-700" },
-                    [_vm._v("Contenido")]
-                  ),
-                  _vm._v(" "),
-                  _c("textarea", {
-                    directives: [
+                  },
+                  [
+                    _c(
+                      "label",
                       {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.content,
-                        expression: "form.content"
-                      }
-                    ],
-                    staticClass: "form-input w-full rounded-md shadow-sm",
-                    attrs: { rows: "8" },
-                    domProps: { value: _vm.form.content },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                        staticClass: "block font-medium text-sm text-gray-700"
+                      },
+                      [
+                        _vm._v(
+                          "\n                                Resumen\n                            "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.excerpt,
+                          expression: "form.excerpt"
                         }
-                        _vm.$set(_vm.form, "content", $event.target.value)
+                      ],
+                      staticClass: "form-input w-full rounded-md shadow-sm",
+                      domProps: { value: _vm.form.excerpt },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "excerpt", $event.target.value)
+                        }
                       }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass:
-                        "rounded-md  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4"
-                    },
-                    [
-                      _vm._v(
-                        "\n                                Editar\n                            "
-                      )
-                    ]
-                  )
-                ])
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "block font-medium text-sm text-gray-700"
+                      },
+                      [
+                        _vm._v(
+                          "\n                                Contenido\n                            "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.content,
+                          expression: "form.content"
+                        }
+                      ],
+                      staticClass: "form-input w-full rounded-md shadow-sm",
+                      attrs: { rows: "8" },
+                      domProps: { value: _vm.form.content },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "content", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
+                      },
+                      [_vm._v("Editar")]
+                    )
+                  ]
+                )
               ])
             ])
           ])
@@ -33489,7 +33496,9 @@ var render = function() {
                         [
                           _c(
                             "inertia-link",
-                            { attrs: { href: _vm.route("notes.edit", note) } },
+                            {
+                              attrs: { href: _vm.route("notes.edit", note.id) }
+                            },
                             [
                               _vm._v(
                                 "\n                                        Editar\n                                    "
@@ -33572,7 +33581,7 @@ var render = function() {
                 _c("p", { staticClass: "text-sm text-gray-600" }, [
                   _vm._v(
                     "\n                            " +
-                      _vm._s(_vm.note.excert) +
+                      _vm._s(_vm.note.excerpt) +
                       "\n                        "
                   )
                 ])

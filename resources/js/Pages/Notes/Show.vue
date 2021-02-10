@@ -15,7 +15,7 @@
                                 Detalle de una nota
                             </h3>
                             <p class="text-sm text-gray-600">
-                                {{ note.excert}}
+                                {{ note.excerpt}}
                             </p>
                         </div>
                     </div>

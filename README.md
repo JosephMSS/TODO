@@ -66,4 +66,39 @@ Este se puede dividir en tres secciones:
 1. Plantilla
 2. Scripts
 3. Estilos
- En las vistas vue mepleamos codigo javascript para acceder a las propiedades del objeto. 
+   En las vistas vue mepleamos codigoe javascript para acceder a las propiedades del objeto.
+
+### Edicion de los datos
+
+Para poder enlazar los datos de un objeto a un formulario debemos hacer ingresar los siguientes valores en el script expor default, dentro de form vamos a asignar los espacion que necesitamos y asignamos los datos del objeto al cual pertenece.
+
+```
+data() {
+       return {
+           form: {
+           excerpt: this.note.excerpt,
+           content: this.note.content
+       }
+       }
+   }
+```
+
+ademas debemmos enlazar los input a estos datos con el atributo v-model
+
+```
+<textarea v-model="form.content"
+rows="8"
+class="form-input w-full rounded-md shadow-sm"></textarea>
+```
+
+## Update
+
+> Podemos agregar en el foulario el metodo `submit.prevent='submit'`, prevent evita que se recargue el formulario y el valor submit hace referencia a unmetodo configurado en los scripts
+
+```
+methods:{
+        submit(){
+            this.inertia.put(this.route('notes.update',this.note.id),this.form)
+        }
+```
+En donde por medio de `inertia.put`(este puede ser: post, delete) enviamos la ruta,id y con el objeto `form` enviamos la informacion que se encuentra en el formulario. 
